@@ -1,0 +1,9 @@
+rule unzip_data:
+    input: 'data/sentiment analysis.zip'
+    output: 'data/sentiment_analysis/birulevo sentiment coded.xlsx'
+    shell: 'echo %CD% && unzip "{input}" -d data/sentiment_analysis'
+
+rule save_first_tweet:
+    input: 'data/sentiment_analysis/Сентимент КЁЛЬН.xlsx'
+    output: 'data/first_text.txt'
+    shell: 'python -m src.save_first_tweet "{input}" {output}'
